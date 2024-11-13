@@ -3,7 +3,6 @@ import {VideoCard ,ChannelCard}  from './';
 
 const Videos = ({videos ,direction}) => {
 
-  console.log(videos,'RelatedVideos');
   if(!videos?.length) return 'Loading...';
   return (
     <Stack direction={direction || "row"} flexWrap='wrap' justifyContent='start' gap={2}>

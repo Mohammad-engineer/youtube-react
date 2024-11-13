@@ -2,9 +2,14 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
-import { CheckCircle } from "@mui/icons-material";
 import { Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
+import Button from '@mui/material/Button';
+
+//icons
+import { CheckCircle } from "@mui/icons-material";
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
@@ -32,7 +37,7 @@ const VideoDetail = () => {
     <Box minHeight="95vh">
       <Stack direction={{ xs: "column", md: "row" }}>
         <Box flex={1}>
-          <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
+          <Box sx={{ width: "100%", top: "86px" }}>
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${id}`}
               className="react-player"
@@ -48,8 +53,8 @@ const VideoDetail = () => {
               py={1}
               px={2}
             >
-              <Link to={`channel/${channelId}`}>
-                <Typography>
+              <Link to={`channel/${channelId}`} style={{ color: "gray"}}>
+                <Typography variant="body1">
                   {channelTitle}
                   <CheckCircle
                     sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
@@ -57,12 +62,15 @@ const VideoDetail = () => {
                 </Typography>
               </Link>
               <Stack direction="row" gap="20px" alignItems="center">
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                <Button variant="body1" sx={{ opacity: 0.7 }} align='center'
+                startIcon={<VisibilityIcon />} >
+            
                   {parseInt(viewCount).toLocaleString()} views
-                </Typography>
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                </Button >
+                <Button variant="body1" sx={{ opacity: 0.7 }}
+                 startIcon={<ThumbUpOffAltIcon />}>
                   {parseInt(likeCount).toLocaleString()} likes
-                </Typography>
+                </Button>
               </Stack>
             </Stack>
           </Box>
