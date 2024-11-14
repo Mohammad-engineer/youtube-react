@@ -22,7 +22,6 @@ const Feed = () => {
     fetchVideos();
   }, [selectedCategory]);
 
-  console.log({ videos });
   return (
     <>
       <Helmet>

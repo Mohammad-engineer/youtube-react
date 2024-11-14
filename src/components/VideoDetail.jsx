@@ -41,6 +41,7 @@ const VideoDetail = () => {
         />
       </Stack>
     );
+    
   const {
     snippet: { title, channelId, channelTitle },
     statistics: { viewCount, likeCount },
