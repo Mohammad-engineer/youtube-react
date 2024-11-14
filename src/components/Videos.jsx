@@ -7,7 +7,8 @@ const Videos = ({ videos, direction }) => {
     return (
       <Stack alignItems='center'
       justifyContent='center'
-      height='85%'>
+      height='70vh'
+      >
         <DNA
           visible={true}
           height="80"
