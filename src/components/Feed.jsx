@@ -13,6 +13,7 @@ const Feed = () => {
     );
   }, [selectedCategory]);
 
+  console.log({ videos });
   return (
     <>
       <Helmet>
@@ -52,8 +53,11 @@ const Feed = () => {
             {selectedCategory}
             <span style={{ color: "#f31503", marginLeft: "10px" }}>videos</span>
           </Typography>
-
-          <Videos videos={videos} />
+          {(videos.length == 0) ? (
+            <h3>please connect you`re vpn to show content</h3>
+          ) : (
+            <Videos videos={videos} />
+          )}
         </Box>
       </Stack>
     </>
