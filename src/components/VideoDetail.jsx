@@ -41,7 +41,6 @@ const VideoDetail = () => {
         />
       </Stack>
     );
-console.log({videoDetail})
   const {
     snippet: { title, channelId, channelTitle },
     statistics: { viewCount, likeCount },
