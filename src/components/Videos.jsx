@@ -1,20 +1,44 @@
-import {Stack,Box} from '@mui/material'
-import {VideoCard ,ChannelCard}  from './';
+import { Stack, Box } from "@mui/material";
+import { VideoCard, ChannelCard } from "./";
+import { DNA } from "react-loader-spinner";
 
-const Videos = ({videos ,direction}) => {
+const Videos = ({ videos, direction }) => {
+  if (!videos?.length)
+    return (
+      <Stack alignItems='center'
+      justifyContent='center'
+      height='85%'>
+        <DNA
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="dna-loading"
+          wrapperStyle={{}}
+          wrapperClass="dna-wrapper"
+        />
+      </Stack>
+    );
 
-  if(!videos?.length) return 'Loading...';
   return (
-    <Stack direction={direction || "row"} flexWrap='wrap' justifyContent='start' gap={2}>
-      {videos.map((item,index)=>(
-        <Box key={index}>
-          {item.id.videoId && <VideoCard item={item} />}
-          {item.id.channelId && <ChannelCard channelDetail={item} />}
-        </Box>
+    <Stack
+      direction={direction || "row"}
+      flexWrap="wrap"
+      justifyContent="start"
+      gap={2}
+    >
+      {videos.map((item, index) => {
+        const shouldRenderCard = item.id.videoId || item.id.channelId;
+        if (!shouldRenderCard) return null;
 
-      ))}
+        return (
+          <Box key={index}>
+            {item.id.videoId && <VideoCard item={item} />}
+            {item.id.channelId && <ChannelCard channelDetail={item} />}
+          </Box>
+        );
+      })}
     </Stack>
-  )
-}
+  );
+};
 
-export default Videos
+export default Videos;
