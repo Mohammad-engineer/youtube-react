@@ -41,7 +41,7 @@ const VideoDetail = () => {
         />
       </Stack>
     );
-
+console.log({videoDetail})
   const {
     snippet: { title, channelId, channelTitle },
     statistics: { viewCount, likeCount },
@@ -60,6 +60,7 @@ const VideoDetail = () => {
                 url={`https://www.youtube.com/watch?v=${id}`}
                 className="react-player"
                 controls
+                onError={()=>alert("please connect you`re vpn to show content")}
               />
               <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
                 {title}

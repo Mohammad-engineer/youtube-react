@@ -8,9 +8,18 @@ const Feed = () => {
   const [videos, setVideos] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("New");
   useEffect(() => {
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) =>
-      setVideos(data.items)
-    );
+    const fetchVideos = async () => {
+      try {
+        const data = await fetchFromAPI(
+          `search?part=snippet&q=${selectedCategory}`
+        );
+        setVideos(data.items);
+      } catch (error) {
+        alert("please connect you`re vpn to show content");
+      }
+    };
+
+    fetchVideos();
   }, [selectedCategory]);
 
   console.log({ videos });
@@ -53,11 +62,9 @@ const Feed = () => {
             {selectedCategory}
             <span style={{ color: "#f31503", marginLeft: "10px" }}>videos</span>
           </Typography>
-          {(videos.length == 0) ? (
-            <h3>please connect you`re vpn to show content</h3>
-          ) : (
-            <Videos videos={videos} />
-          )}
+          
+          <Videos videos={videos} />
+
         </Box>
       </Stack>
     </>
