@@ -48,6 +48,7 @@ const Feed = () => {
             variant="body2"
             sx={{ mt: 1.5, color: "#fff" }}
           >
+            m.mohammadi <br />
             copy right 2023
           </Typography>
         </Box>
